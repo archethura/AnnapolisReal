@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Maddox | Strategic Vision</title>
+    <title>Joseph Maddox | Strategic Vision for Graduate Annapolis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,59 +17,26 @@
             margin: 0;
             overflow-x: hidden;
         }
-        #error-display {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #ff4444;
-            color: white;
-            padding: 10px;
-            font-family: monospace;
-            z-index: 9999;
-            display: none;
-            font-size: 12px;
-            border-bottom: 2px solid white;
+        .serif { font-family: 'Playfair Display', serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-        #root:empty::after {
-            content: "INITIALIZING SYSTEM...";
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-weight: 900;
-            letter-spacing: 0.5em;
-            color: #D4AF37;
-            text-transform: uppercase;
-            font-size: 10px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
+        .animate-marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 35s linear infinite;
         }
     </style>
-    <!-- Diagnostic Script -->
-    <script>
-        window.onerror = function(msg, url, lineNo, columnNo, error) {
-            const display = document.getElementById('error-display');
-            display.style.display = 'block';
-            display.innerText = 'DIAGNOSTIC ERROR: ' + msg + ' (Line: ' + lineNo + ')';
-            return false;
-        };
-        window.addEventListener('unhandledrejection', function(event) {
-            const display = document.getElementById('error-display');
-            display.style.display = 'block';
-            display.innerText = 'PROMISE ERROR: ' + event.reason;
-        });
-    </script>
     <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19?dev",
-    "react-dom": "https://esm.sh/react-dom@19?dev",
-    "react-dom/client": "https://esm.sh/react-dom@19/client?dev",
+    "react": "https://esm.sh/react@19",
+    "react-dom": "https://esm.sh/react-dom@19",
+    "react-dom/client": "https://esm.sh/react-dom@19/client",
     "lucide-react": "https://esm.sh/lucide-react",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
@@ -81,7 +47,6 @@
 </script>
 </head>
 <body>
-    <div id="error-display"></div>
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
 </body>
