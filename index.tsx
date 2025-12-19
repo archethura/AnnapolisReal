@@ -316,12 +316,14 @@ const MissionDossiers = () => {
       shape: "We began with a roundtable: What potential are we trying to actualize? The answer was clear — reconnection. The team envisioned The Warrior not as a luxury landmark standing apart, but as a gathering place standing with the city. We used the Chamber of Commerce as a bridge between business and community — transforming a single ribbon cutting into a six-week celebration of renewal.",
       sell: "For six consecutive weeks, the city came alive. Over 2,000 guests joined in the celebrations, rediscovering a place that felt both brand new and deeply familiar. $200K in auxiliary spend followed over five months. The Warrior reentered the community not through advertising, but through authentic connection.",
       evidence: [
-        'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=600&auto=format&fit=crop', // act-placeholder (aerial hotel)
-        'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600&auto=format&fit=crop', // act-placeholder (rooftop)
-        'https://images.unsplash.com/photo-1551882547-ff43c69e5cf2?q=80&w=600&auto=format&fit=crop', // act-placeholder (ribbon)
-        'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=600&auto=format&fit=crop', // act-placeholder (crowd)
-        'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=600&auto=format&fit=crop', // act-placeholder (live music)
-        'https://images.unsplash.com/photo-1517840901100-8179e982ad44?q=80&w=600&auto=format&fit=crop'  // act-placeholder (lounge)
+        'images/rooftop-party.jpg',
+        'images/ribbon-lobby.jpg',
+        'images/ribbon-rooftop.jpg',
+        'images/ribbon-spa.jpg',
+        'images/live-music.jpg',
+        'images/lounge-packed.jpg',
+        'images/rooftop-crowd.jpg',
+        'images/crowd-selfie.jpg'
       ]
     },
     {
@@ -332,14 +334,17 @@ const MissionDossiers = () => {
       shape: "We built a systematic programming engine with three layers. First, recurring series that create habit and fill midweek gaps: Ladies Night every Thursday ($8K+ per event), Trivia Wednesdays, Sizzling Thursdays steak specials. Second, seasonal tentpoles: 12 Days of Christmas (200+ room nights annually), NYE Masquerade Ball (400+ guests), Valentine's couples retreats. Third, premium experiences: winemaker dinners, chef's table events, spa skincare nights, bourbon tastings.",
       sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book.",
       evidence: [
-        'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600&auto=format&fit=crop', // 12days
-        'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop', // nye
-        'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop', // ladies
-        'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop', // trivia
-        'https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=600&auto=format&fit=crop', // eclipse
-        'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=600&auto=format&fit=crop', // halloween
-        'https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=600&auto=format&fit=crop', // football
-        'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop'  // brides night
+        'images/act-12days.jpg',
+        'images/act-nye.jpg',
+        'images/act-ladies.jpg',
+        'images/act-trivia.jpg',
+        'images/act-eclipse.jpg',
+        'images/act-halloween.jpg',
+        'images/act-football.jpg',
+        'images/act-brides-night.jpg',
+        'images/act-sizzling.jpg',
+        'images/act-heroes.jpg',
+        'images/act-skincare.jpg'
       ]
     },
     {
@@ -350,12 +355,13 @@ const MissionDossiers = () => {
       shape: "We created a multi-layered recognition and development system. Monthly: Employee of the Month with real rewards. Weekly: department-level shoutouts. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
       sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction.",
       evidence: [
-        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop', // housekeeping
-        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=600&auto=format&fit=crop', // trolley
-        'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop', // pizza
-        'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop', // team meeting
-        'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop', // certificate
-        'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600&auto=format&fit=crop'  // group shot
+        'images/housekeeping-week.jpg',
+        'images/trolley-1.jpg',
+        'images/trolley-2.jpg',
+        'images/pizza-party.jpg',
+        'images/group-dinner.jpg',
+        'images/team-meeting.jpg',
+        'images/certificate-presentation.jpg'
       ]
     }
   ];
