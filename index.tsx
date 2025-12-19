@@ -14,7 +14,11 @@ import {
   Target
 } from 'lucide-react';
 
-const useOnScreen = (ref: React.RefObject<HTMLElement>, rootMargin = '0px') => {
+/**
+ * useOnScreen Hook
+ * Fixed: Added | null to RefObject to satisfy TypeScript compiler (error TS2345)
+ */
+const useOnScreen = (ref: React.RefObject<HTMLElement | null>, rootMargin = '0px') => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,7 +83,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button className="lg:hidden text-[#D4AF37]" onClick={() => setMobileMenu(!mobileMenu)}>
+        <button className="lg:hidden text-[#D4AF37]" onClick={() => setMobileMenu(!mobileMenu)} aria-label="Toggle Menu">
           {mobileMenu ? <X /> : <Menu />}
         </button>
       </div>
