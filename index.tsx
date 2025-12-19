@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { 
@@ -13,8 +12,7 @@ import {
   Trophy,
   BarChart3,
   TrendingUp,
-  Target,
-  ChevronRight
+  Target
 } from 'lucide-react';
 
 const useOnScreen = (ref: React.RefObject<HTMLElement>, rootMargin = '0px') => {
@@ -88,7 +86,6 @@ const Navbar = () => {
   }, []);
   const links = [
     { name: 'Track Record', href: '#track-record' },
-    { name: 'Case Studies', href: '#case-studies' },
     { name: 'Vision', href: '#vision' },
     { name: 'Calendar', href: '#calendar' },
   ];
@@ -99,7 +96,6 @@ const Navbar = () => {
           <Anchor className="w-8 h-8 md:w-10 md:h-10 text-[#D4AF37] transition-transform group-hover:rotate-12" />
           <div className="flex flex-col text-left">
             <span className="text-xl md:text-2xl font-black tracking-[0.25em] text-white leading-none uppercase italic">JOSEPH MADDOX</span>
-            <span className="text-[8px] md:text-[9px] tracking-[0.6em] text-[#D4AF37] uppercase font-black mt-1">Graduate Annapolis Briefing</span>
           </div>
         </a>
         <div className="hidden lg:flex items-center space-x-12">
@@ -119,6 +115,7 @@ const Navbar = () => {
           {links.map(link => (
             <a key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="text-xl font-black text-white uppercase tracking-widest">{link.name}</a>
           ))}
+          <a href="/resume.pdf" target="_blank" className="text-xl font-black text-[#D4AF37] uppercase tracking-widest">Resume</a>
         </div>
       )}
     </nav>
@@ -280,7 +277,7 @@ const App = () => (
       <section className="relative min-h-screen flex flex-col justify-center bg-[#001233] pt-32 pb-20">
         <div className="max-w-[1600px] mx-auto px-8 md:px-12 relative z-10 text-left">
           <AnimatedOnScroll className="mb-8 flex items-center space-x-6">
-            <span className="text-[#D4AF37] text-xs font-black uppercase tracking-[0.8em]">Operational Directive</span>
+            <span className="text-[#D4AF37] text-xs font-black uppercase tracking-[0.8em]">A Strategic Vision for Graduate Annapolis</span>
             <div className="h-px w-24 bg-[#D4AF37]/40"></div>
           </AnimatedOnScroll>
           <AnimatedOnScroll delay={200}>
