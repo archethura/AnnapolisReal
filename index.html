@@ -10,37 +10,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #001233;
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, .font-black {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-        }
-        .serif {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        /* Custom Scrollbar */
-        .hide-scrollbar::-webkit-scrollbar {
-            height: 4px;
-        }
-        .hide-scrollbar::-webkit-scrollbar-track {
-            background: #f4f4f4;
-        }
-        .hide-scrollbar::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-        }
-
-        /* Infinite Marquee Animation */
+        .serif { font-family: 'Playfair Display', serif; }
+        .hide-scrollbar::-webkit-scrollbar { height: 4px; }
+        .hide-scrollbar::-webkit-scrollbar-track { background: #f4f4f410; }
+        .hide-scrollbar::-webkit-scrollbar-thumb { background: #D4AF37; }
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -50,34 +31,22 @@
             width: fit-content;
             animation: marquee 40s linear infinite;
         }
-        .animate-marquee:hover {
-            animation-play-state: paused;
-        }
-
-        ::selection {
-            background: #D4AF37;
-            color: #001233;
-        }
-
-        .transition-all {
-          transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
     </style>
 <script type="importmap">
 {
   "imports": {
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.3.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
