@@ -11,14 +11,6 @@ import {
   Trophy,
   TrendingUp,
   Target,
-  Eye,
-  Layers,
-  Zap,
-  Star,
-  Home,
-  Tent,
-  MailQuestion,
-  Heart,
   ArrowRight
 } from 'lucide-react';
 
@@ -111,19 +103,16 @@ const ProcessSection = () => {
   const steps = [
     {
       title: "SEE",
-      icon: <Eye className="w-12 h-12 text-[#D4AF37]" />,
       subtitle: "Data & Cultural Intelligence",
       description: "A comprehensive audit of the hyper-local market. For Annapolis, this means mapping the Naval Academy's 12-month rhythm—from I-Day to Commissioning Week—identifying where local traditions intersect with revenue gaps."
     },
     {
       title: "SHAPE",
-      icon: <Layers className="w-12 h-12 text-[#D4AF37]" />,
       subtitle: "The Activation Framework",
       description: "Transforming the physical asset into a 'living room' for the community. We design experiences, not just menus, ensuring the lobby and F&B outlets feel like an extension of the Severn River waterfront culture."
     },
     {
       title: "SELL",
-      icon: <Zap className="w-12 h-12 text-[#D4AF37]" />,
       subtitle: "Community Deployment",
       description: "High-impact sales strategies that prioritize civic partnerships. We don't just wait for RFPs; we actively embed the hotel into the fabric of Annapolis heritage, driving loyalty and market share."
     }
@@ -140,12 +129,12 @@ const ProcessSection = () => {
         <div className="space-y-32">
           {steps.map((step, i) => (
             <FadeIn key={i} delay={i * 200}>
-              <div className="flex flex-col md:flex-row gap-12 border-t-2 border-[#001233] pt-12 group">
-                <div className="flex-shrink-0 flex items-start space-x-8 md:w-1/3">
-                  <div className="mt-2 group-hover:scale-110 transition-transform duration-500">{step.icon}</div>
-                  <h3 className="text-7xl md:text-8xl font-black italic tracking-tighter text-[#001233]">{step.title}</h3>
+              <div className="flex flex-col gap-8 border-t-2 border-[#001233] pt-12 group">
+                <div className="flex items-center space-x-6">
+                   <span className="text-[#D4AF37] font-black text-xl tracking-widest italic">0{i+1} —</span>
+                   <h3 className="text-7xl md:text-8xl font-black italic tracking-tighter text-[#001233]">{step.title}</h3>
                 </div>
-                <div className="md:w-2/3">
+                <div className="pl-12">
                   <p className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] mb-6">{step.subtitle}</p>
                   <p className="text-[#001233]/80 text-2xl leading-relaxed serif italic">
                     {step.description}
@@ -162,12 +151,12 @@ const ProcessSection = () => {
 
 const TemplateSection = () => {
   const items = [
-    { label: "Tentpole", description: "Signature monthly event", icon: <Star className="w-5 h-5" /> },
-    { label: "Outlets", description: "Activation in each venue", icon: <Home className="w-5 h-5" /> },
-    { label: "Rooms", description: "Themed package", icon: <Tent className="w-5 h-5" /> },
-    { label: "Email", description: "Month-specific campaign", icon: <MailQuestion className="w-5 h-5" /> },
-    { label: "Charity", description: "Local partner tie-in", icon: <Heart className="w-5 h-5" /> },
-    { label: "Capstone", description: "Month-ending experience", icon: <Zap className="w-5 h-5" /> }
+    { label: "Tentpole", description: "Signature monthly event" },
+    { label: "Outlets", description: "Activation in each venue" },
+    { label: "Rooms", description: "Themed package" },
+    { label: "Email", description: "Month-specific campaign" },
+    { label: "Charity", description: "Local partner tie-in" },
+    { label: "Capstone", description: "Month-ending experience" }
   ];
 
   return (
@@ -179,16 +168,12 @@ const TemplateSection = () => {
           <p className="text-xl md:text-3xl serif italic text-[#001233]/60 mb-20">"Same structure. Different theme. Repeatable every year."</p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 100}>
-              <div className="group border-l-2 border-[#D4AF37]/20 pl-8 hover:border-[#D4AF37] transition-colors duration-500 bg-white p-10 shadow-sm hover:shadow-xl rounded-sm h-full">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-10 h-10 flex items-center justify-center bg-[#001233] text-[#D4AF37] rounded-sm shadow-lg transform group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233]">{item.label}</h4>
-                </div>
+              <div className="group border border-[#001233]/10 bg-white p-12 transition-all duration-500 hover:border-[#D4AF37] hover:shadow-2xl rounded-sm">
+                <span className="text-[#D4AF37] text-xs font-black tracking-[0.4em] mb-4 block uppercase opacity-30">Phase 0{i+1}</span>
+                <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233] mb-4">{item.label}</h4>
                 <p className="text-[#001233]/70 text-lg leading-relaxed font-medium">
                   {item.description}
                 </p>
@@ -215,6 +200,7 @@ const MissionDossier = () => {
         "./rooftop-party.jpg", 
         "./ribbon-lobby.jpg", 
         "./ribbon-rooftop.jpg", 
+        "./ribbon-spa.jpg", 
         "./live-music.jpg", 
         "./lounge-packed.jpg", 
         "./rooftop-crowd.jpg", 
@@ -224,14 +210,14 @@ const MissionDossier = () => {
     {
       title: "Building Teams That Stay",
       metric: "80%",
-      role: "80% Retention | 27-Point Engagement Increase",
+      role: "80% Retention | Engagement Increase",
       see: "Hospitality turnover hovers near 80% industry-wide. But behind every resignation is a person who never felt seen, never felt developed, never felt like their future was here. The potential wasn't just retention — it was transformation. What if we built a culture where people actually wanted to stay?",
-      shape: "We created a multi-layered recognition and development system. Monthly: Employee of the Month with real rewards. Weekly: department-level shoutouts. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
+      shape: "We created a multi-layered recognition and development system. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
       sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction.",
       images: [
         "./housekeeping-week.jpg", 
-        "./trolley-outing.jpg", 
-        "./trolley-interior.jpg", 
+        "./trolley-1.jpg", 
+        "./trolley-2.jpg", 
         "./pizza-party.jpg", 
         "./meeting-ballroom.jpg", 
         "./certificates.jpg"
@@ -242,7 +228,7 @@ const MissionDossier = () => {
       metric: "$1M+",
       role: "Campaign Driven Growth since 2022",
       see: "Hotels in regional markets don't get foot traffic by accident — they earn it. The potential wasn't to compete for the travelers already coming; it was to manufacture demand by giving people a reason to arrive in the first place. The question we asked: What if the hotel itself became the destination?",
-      shape: "We built a systematic programming engine with three layers. First, recurring series that create habit and fill midweek gaps: Ladies Night every Thursday ($8K+ per event), Trivia Wednesdays, Sizzling Thursdays steak specials. Second, seasonal tentpoles: 12 Days of Christmas (200+ room nights annually), NYE Masquerade Ball (400+ guests), Valentine's couples retreats.",
+      shape: "We built a systematic programming engine with three layers. First, recurring series that create habit: Ladies Night every Thursday, Trivia Wednesdays, Sizzling Thursdays. Second, seasonal tentpoles: 12 Days of Christmas, NYE Masquerade Ball, Valentine's couples retreats.",
       sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book.",
       images: [
         "./act-12days.jpg", 
@@ -264,7 +250,7 @@ const MissionDossier = () => {
     <section id="track-record" className="py-32 bg-[#001233] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <FadeIn>
-          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Case Studies</span>
+          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Operational Evidence</span>
           <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-24 text-white">RESULTS IN <br />ACTION.</h2>
         </FadeIn>
         
@@ -289,59 +275,51 @@ const MissionDossier = () => {
               
               {active === i && (
                 <div className="px-8 pb-16 animate-fadeIn">
-                  <div className="mb-16">
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.3em]">Operational Evidence</span>
-                      <div className="flex items-center space-x-2 text-[#D4AF37]/50 text-[10px] font-bold uppercase tracking-widest">
-                        <span>Swipe to Browse</span> <ArrowRight size={14} />
-                      </div>
-                    </div>
-                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-6 -mx-4 px-4 pb-8">
+                  {/* COMPACT HORIZONTAL SCROLLER */}
+                  <div className="mb-16 border-b border-white/10 pb-8">
+                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-4 -mx-4 px-4">
                       {m.images.map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[450px] h-[350px] snap-start overflow-hidden border border-white/10 shadow-2xl rounded-sm bg-black/20">
+                        <div key={idx} className="flex-shrink-0 w-[300px] h-[200px] snap-start overflow-hidden border border-white/10 bg-black/40 shadow-xl rounded-sm">
                           <img 
                             src={img} 
                             alt={`${m.title} evidence ${idx + 1}`} 
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 transform hover:scale-105"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 transform hover:scale-105"
                             loading="lazy"
-                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=60&w=800"; }}
+                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=60&w=400"; }}
                           />
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* VERTICALLY STACKED NARRATIVE BLOCKS */}
-                  <div className="max-w-4xl space-y-24">
-                    <div className="space-y-6">
+                  {/* ALIGNED VERTICAL STACKED NARRATIVE */}
+                  <div className="max-w-4xl space-y-20 pt-8">
+                    <div className="flex flex-col gap-4">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-px bg-[#D4AF37]"></div>
-                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.6em]">SEE</span>
+                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em]">01. THE AUDIT</span>
+                        <h4 className="text-[#D4AF37] text-4xl font-black italic tracking-tighter">SEE.</h4>
                       </div>
-                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-4 border-[#D4AF37]/20 pl-8 serif">
+                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-2 border-[#D4AF37] pl-8 serif">
                         {m.see}
                       </p>
                     </div>
                     
-                    <div className="space-y-6">
+                    <div className="flex flex-col gap-4">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-px bg-[#D4AF37]"></div>
-                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.6em]">SHAPE</span>
+                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em]">02. THE REFRAME</span>
+                        <h4 className="text-[#D4AF37] text-4xl font-black italic tracking-tighter">SHAPE.</h4>
                       </div>
-                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-4 border-[#D4AF37]/20 pl-8 serif">
+                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-2 border-[#D4AF37] pl-8 serif">
                         {m.shape}
                       </p>
                     </div>
                     
-                    <div className="space-y-6 bg-white/[0.03] p-12 border border-[#D4AF37]/20 relative overflow-hidden group rounded-sm">
-                      <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <Zap className="text-[#D4AF37] w-32 h-32" />
+                    <div className="flex flex-col gap-4 p-12 bg-white/5 border border-[#D4AF37]/20 rounded-sm">
+                      <div className="flex items-center space-x-4">
+                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em]">03. THE EXECUTION</span>
+                        <h4 className="text-[#D4AF37] text-4xl font-black italic tracking-tighter">SELL.</h4>
                       </div>
-                      <div className="flex items-center space-x-4 relative z-10">
-                        <div className="w-12 h-px bg-[#D4AF37]"></div>
-                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.6em]">SELL</span>
-                      </div>
-                      <p className="text-white text-2xl font-bold leading-relaxed italic relative z-10 serif">
+                      <p className="text-white text-2xl font-bold leading-relaxed italic serif">
                         {m.sell}
                       </p>
                     </div>
