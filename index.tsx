@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 
 /**
- * useOnScreen Hook
+ * useOnScreen Hook for fade-in animations
  */
 function useOnScreen<T extends HTMLElement>(ref: React.RefObject<T | null>, rootMargin = '0px') {
   const [isVisible, setIsVisible] = useState(false);
@@ -83,7 +83,7 @@ const Navbar = () => {
           ))}
           <a 
             href="#" 
-            className="bg-[#D4AF37] text-[#001233] px-8 py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-lg"
+            className="bg-[#D4AF37] text-[#001233] px-8 py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-lg rounded-sm"
           >
             Resume
           </a>
@@ -111,19 +111,19 @@ const ProcessSection = () => {
   const steps = [
     {
       title: "SEE",
-      icon: <Eye className="w-12 h-12 mb-6 text-[#D4AF37]" />,
+      icon: <Eye className="w-12 h-12 text-[#D4AF37]" />,
       subtitle: "Data & Cultural Intelligence",
       description: "A comprehensive audit of the hyper-local market. For Annapolis, this means mapping the Naval Academy's 12-month rhythm—from I-Day to Commissioning Week—identifying where local traditions intersect with revenue gaps."
     },
     {
       title: "SHAPE",
-      icon: <Layers className="w-12 h-12 mb-6 text-[#D4AF37]" />,
+      icon: <Layers className="w-12 h-12 text-[#D4AF37]" />,
       subtitle: "The Activation Framework",
       description: "Transforming the physical asset into a 'living room' for the community. We design experiences, not just menus, ensuring the lobby and F&B outlets feel like an extension of the Severn River waterfront culture."
     },
     {
       title: "SELL",
-      icon: <Zap className="w-12 h-12 mb-6 text-[#D4AF37]" />,
+      icon: <Zap className="w-12 h-12 text-[#D4AF37]" />,
       subtitle: "Community Deployment",
       description: "High-impact sales strategies that prioritize civic partnerships. We don't just wait for RFPs; we actively embed the hotel into the fabric of Annapolis heritage, driving loyalty and market share."
     }
@@ -131,22 +131,26 @@ const ProcessSection = () => {
 
   return (
     <section id="process" className="py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-4xl mx-auto px-6 md:px-12">
         <FadeIn>
           <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">The Methodology</span>
-          <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-24 text-[#001233]">THE <br />PROCESS.</h2>
+          <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-32 text-[#001233]">THE <br />PROCESS.</h2>
         </FadeIn>
-        <div className="grid lg:grid-cols-3 gap-16">
+        
+        <div className="space-y-32">
           {steps.map((step, i) => (
             <FadeIn key={i} delay={i * 200}>
-              <div className="group">
-                {step.icon}
-                <h3 className="text-6xl font-black italic tracking-tighter text-[#001233] mb-2">{step.title}</h3>
-                <p className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em] mb-6">{step.subtitle}</p>
-                <div className="h-px w-full bg-[#001233]/10 mb-8 group-hover:bg-[#D4AF37] transition-colors"></div>
-                <p className="text-[#001233]/70 text-lg leading-relaxed font-medium">
-                  {step.description}
-                </p>
+              <div className="flex flex-col md:flex-row gap-12 border-t-2 border-[#001233] pt-12 group">
+                <div className="flex-shrink-0 flex items-start space-x-8 md:w-1/3">
+                  <div className="mt-2 group-hover:scale-110 transition-transform duration-500">{step.icon}</div>
+                  <h3 className="text-7xl md:text-8xl font-black italic tracking-tighter text-[#001233]">{step.title}</h3>
+                </div>
+                <div className="md:w-2/3">
+                  <p className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] mb-6">{step.subtitle}</p>
+                  <p className="text-[#001233]/80 text-2xl leading-relaxed serif italic">
+                    {step.description}
+                  </p>
+                </div>
               </div>
             </FadeIn>
           ))}
@@ -172,15 +176,15 @@ const TemplateSection = () => {
         <FadeIn>
           <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Standard Operating System</span>
           <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-4 text-[#001233]">THE MONTHLY <br />TEMPLATE.</h2>
-          <p className="text-xl md:text-2xl serif italic text-[#001233]/60 mb-20">Same structure. Different theme. Repeatable every year.</p>
+          <p className="text-xl md:text-3xl serif italic text-[#001233]/60 mb-20">"Same structure. Different theme. Repeatable every year."</p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 100}>
-              <div className="group border-l-2 border-[#D4AF37]/20 pl-8 hover:border-[#D4AF37] transition-colors duration-500 bg-white p-10 shadow-sm hover:shadow-xl rounded-sm">
+              <div className="group border-l-2 border-[#D4AF37]/20 pl-8 hover:border-[#D4AF37] transition-colors duration-500 bg-white p-10 shadow-sm hover:shadow-xl rounded-sm h-full">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center bg-[#001233] text-[#D4AF37] rounded-full shadow-lg transform group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 flex items-center justify-center bg-[#001233] text-[#D4AF37] rounded-sm shadow-lg transform group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233]">{item.label}</h4>
@@ -208,24 +212,13 @@ const MissionDossier = () => {
       shape: "We began with a roundtable: What potential are we trying to actualize? The answer was clear — reconnection. The team envisioned The Warrior not as a luxury landmark standing apart, but as a gathering place standing with the city. We used the Chamber of Commerce as a bridge between business and community — transforming a single ribbon cutting into a six-week celebration of renewal.",
       sell: "For six consecutive weeks, the city came alive. Over 2,000 guests joined in the celebrations, rediscovering a place that felt both brand new and deeply familiar. $200K in auxiliary spend followed over five months. The Warrior reentered the community not through advertising, but through authentic connection.",
       images: [
-        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
-      ]
-    },
-    {
-      title: "The Activation Engine",
-      metric: "$1M+",
-      role: "The Warrior Hotel & Hotel Julien Dubuque",
-      see: "Hotels in regional markets don't get foot traffic by accident — they earn it. The potential wasn't to compete for the travelers already coming; it was to manufacture demand by giving people a reason to arrive in the first place. The question we asked: What if the hotel itself became the destination?",
-      shape: "We built a systematic programming engine with three layers. First, recurring series that create habit and fill midweek gaps: Ladies Night every Thursday ($8K+ per event), Trivia Wednesdays, Sizzling Thursdays steak specials. Second, seasonal tentpoles: 12 Days of Christmas (200+ room nights annually), NYE Masquerade Ball (400+ guests), Valentine's couples retreats. Third, premium experiences: winemaker dinners, chef's table events, spa skincare nights, bourbon tastings.",
-      sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book.",
-      images: [
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1533416405735-2615adbc2911?q=80&w=800&auto=format&fit=crop"
+        "./rooftop-party.jpg", 
+        "./ribbon-lobby.jpg", 
+        "./ribbon-rooftop.jpg", 
+        "./live-music.jpg", 
+        "./lounge-packed.jpg", 
+        "./rooftop-crowd.jpg", 
+        "./crowd-selfie.jpg"
       ]
     },
     {
@@ -236,10 +229,33 @@ const MissionDossier = () => {
       shape: "We created a multi-layered recognition and development system. Monthly: Employee of the Month with real rewards. Weekly: department-level shoutouts. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
       sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction.",
       images: [
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
+        "./housekeeping-week.jpg", 
+        "./trolley-outing.jpg", 
+        "./trolley-interior.jpg", 
+        "./pizza-party.jpg", 
+        "./meeting-ballroom.jpg", 
+        "./certificates.jpg"
+      ]
+    },
+    {
+      title: "The Activation Engine",
+      metric: "$1M+",
+      role: "Campaign Driven Growth since 2022",
+      see: "Hotels in regional markets don't get foot traffic by accident — they earn it. The potential wasn't to compete for the travelers already coming; it was to manufacture demand by giving people a reason to arrive in the first place. The question we asked: What if the hotel itself became the destination?",
+      shape: "We built a systematic programming engine with three layers. First, recurring series that create habit and fill midweek gaps: Ladies Night every Thursday ($8K+ per event), Trivia Wednesdays, Sizzling Thursdays steak specials. Second, seasonal tentpoles: 12 Days of Christmas (200+ room nights annually), NYE Masquerade Ball (400+ guests), Valentine's couples retreats.",
+      sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book.",
+      images: [
+        "./act-12days.jpg", 
+        "./act-nye.jpg", 
+        "./act-ladies.jpg", 
+        "./act-trivia.jpg", 
+        "./act-eclipse.jpg", 
+        "./act-halloween.jpg", 
+        "./act-football.jpg", 
+        "./act-brides-night.jpg", 
+        "./act-sizzling.jpg", 
+        "./act-heroes.jpg", 
+        "./act-skincare.jpg"
       ]
     }
   ];
@@ -273,7 +289,6 @@ const MissionDossier = () => {
               
               {active === i && (
                 <div className="px-8 pb-16 animate-fadeIn">
-                  {/* Visual Evidence - Horizontal Scroll */}
                   <div className="mb-16">
                     <div className="flex items-center justify-between mb-6">
                       <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.3em]">Operational Evidence</span>
@@ -281,49 +296,52 @@ const MissionDossier = () => {
                         <span>Swipe to Browse</span> <ArrowRight size={14} />
                       </div>
                     </div>
-                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-6 -mx-4 px-4 pb-4">
+                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-6 -mx-4 px-4 pb-8">
                       {m.images.map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[350px] h-[250px] snap-start overflow-hidden border border-white/10 shadow-2xl rounded-sm">
+                        <div key={idx} className="flex-shrink-0 w-[450px] h-[350px] snap-start overflow-hidden border border-white/10 shadow-2xl rounded-sm bg-black/20">
                           <img 
                             src={img} 
                             alt={`${m.title} evidence ${idx + 1}`} 
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 transform hover:scale-110"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 transform hover:scale-105"
                             loading="lazy"
+                            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=60&w=800"; }}
                           />
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-3 gap-12">
-                    {/* Unified Typography for SEE, SHAPE, SELL */}
+                  {/* VERTICALLY STACKED NARRATIVE BLOCKS */}
+                  <div className="max-w-4xl space-y-24">
                     <div className="space-y-6">
-                      <div className="flex items-center space-x-3">
-                        <Eye className="text-[#D4AF37] w-5 h-5" />
-                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SEE</span>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-px bg-[#D4AF37]"></div>
+                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.6em]">SEE</span>
                       </div>
-                      <p className="text-white/80 text-lg font-medium leading-relaxed italic border-l border-white/10 pl-6">
+                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-4 border-[#D4AF37]/20 pl-8 serif">
                         {m.see}
                       </p>
                     </div>
+                    
                     <div className="space-y-6">
-                      <div className="flex items-center space-x-3">
-                        <Layers className="text-[#D4AF37] w-5 h-5" />
-                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SHAPE</span>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-px bg-[#D4AF37]"></div>
+                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.6em]">SHAPE</span>
                       </div>
-                      <p className="text-white/80 text-lg font-medium leading-relaxed italic border-l border-white/10 pl-6">
+                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-4 border-[#D4AF37]/20 pl-8 serif">
                         {m.shape}
                       </p>
                     </div>
-                    <div className="space-y-6 bg-[#D4AF37]/5 p-8 border border-[#D4AF37]/20 relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Zap className="text-[#D4AF37] w-12 h-12" />
+                    
+                    <div className="space-y-6 bg-white/[0.03] p-12 border border-[#D4AF37]/20 relative overflow-hidden group rounded-sm">
+                      <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <Zap className="text-[#D4AF37] w-32 h-32" />
                       </div>
-                      <div className="flex items-center space-x-3 relative z-10">
-                        <Zap className="text-[#D4AF37] w-5 h-5" />
-                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SELL</span>
+                      <div className="flex items-center space-x-4 relative z-10">
+                        <div className="w-12 h-px bg-[#D4AF37]"></div>
+                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.6em]">SELL</span>
                       </div>
-                      <p className="text-white/80 text-lg font-medium leading-relaxed italic relative z-10">
+                      <p className="text-white text-2xl font-bold leading-relaxed italic relative z-10 serif">
                         {m.sell}
                       </p>
                     </div>
@@ -452,10 +470,10 @@ const App = () => {
       <section className="py-48 text-center bg-[#001233]">
         <h2 className="text-7xl md:text-[14rem] font-black italic tracking-tighter leading-[0.75] mb-20 uppercase text-white">ACTIVATE <br />ANNAPOLIS.</h2>
         <div className="flex flex-col md:flex-row justify-center gap-8 px-6">
-          <a href="mailto:josephmaddox@outlook.com" className="bg-[#D4AF37] text-[#001233] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl flex items-center justify-center space-x-4">
+          <a href="mailto:josephmaddox@outlook.com" className="bg-[#D4AF37] text-[#001233] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl flex items-center justify-center space-x-4 rounded-sm">
             <Mail size={18} /> <span>Email Briefing</span>
           </a>
-          <button className="border-2 border-white/10 hover:border-[#D4AF37] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] transition-all flex items-center justify-center space-x-4 text-white">
+          <button className="border-2 border-white/10 hover:border-[#D4AF37] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] transition-all flex items-center justify-center space-x-4 text-white rounded-sm">
             <FileText size={18} /> <span>Download Resume</span>
           </button>
         </div>
