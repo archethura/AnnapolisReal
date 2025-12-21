@@ -14,7 +14,13 @@ import {
   Eye,
   Layers,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Star,
+  Home,
+  Tent,
+  MailQuestion,
+  Heart,
+  ChevronRight
 } from 'lucide-react';
 
 /**
@@ -128,6 +134,10 @@ const ProcessSection = () => {
   return (
     <section id="process" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <FadeIn>
+          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">The Methodology</span>
+          <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-24 text-[#001233]">THE <br />PROCESS.</h2>
+        </FadeIn>
         <div className="grid lg:grid-cols-3 gap-16">
           {steps.map((step, i) => (
             <FadeIn key={i} delay={i * 200}>
@@ -138,6 +148,47 @@ const ProcessSection = () => {
                 <div className="h-px w-full bg-[#001233]/10 mb-8 group-hover:bg-[#D4AF37] transition-colors"></div>
                 <p className="text-[#001233]/70 text-lg leading-relaxed font-medium">
                   {step.description}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TemplateSection = () => {
+  const items = [
+    { label: "Tentpole", description: "Signature monthly event", icon: <Star className="w-5 h-5 text-[#D4AF37]" /> },
+    { label: "Outlets", description: "Activation in each venue", icon: <Home className="w-5 h-5 text-[#D4AF37]" /> },
+    { label: "Rooms", description: "Themed package", icon: <Tent className="w-5 h-5 text-[#D4AF37]" /> },
+    { label: "Email", description: "Month-specific campaign", icon: <MailQuestion className="w-5 h-5 text-[#D4AF37]" /> },
+    { label: "Charity", description: "Local partner tie-in", icon: <Heart className="w-5 h-5 text-[#D4AF37]" /> },
+    { label: "Capstone", description: "Month-ending experience", icon: <Zap className="w-5 h-5 text-[#D4AF37]" /> }
+  ];
+
+  return (
+    <section className="py-32 bg-white border-t border-[#001233]/5">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <FadeIn>
+          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Standard Operating System</span>
+          <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-4 text-[#001233]">THE MONTHLY <br />TEMPLATE.</h2>
+          <p className="text-xl md:text-2xl serif italic text-[#001233]/60 mb-20">"Same structure. Different theme. Repeatable every year."</p>
+        </FadeIn>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          {items.map((item, i) => (
+            <FadeIn key={i} delay={i * 100}>
+              <div className="group border-l border-[#001233]/10 pl-8 hover:border-[#D4AF37] transition-colors duration-500">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="p-2 bg-[#001233]/5 rounded-sm">
+                    {item.icon}
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233]">{item.label}</h4>
+                </div>
+                <p className="text-[#001233]/70 text-lg leading-relaxed font-medium">
+                  {item.description}
                 </p>
               </div>
             </FadeIn>
@@ -394,6 +445,7 @@ const App = () => {
 
       <VisionSection />
       <ProcessSection />
+      <TemplateSection />
       
       <MissionDossier />
       <CalendarSection />
