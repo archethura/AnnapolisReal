@@ -8,9 +8,6 @@ import {
   X,
   Plus,
   Minus,
-  Trophy,
-  TrendingUp,
-  Target,
   ArrowRight
 } from 'lucide-react';
 
@@ -129,14 +126,14 @@ const ProcessSection = () => {
         <div className="space-y-32">
           {steps.map((step, i) => (
             <FadeIn key={i} delay={i * 200}>
-              <div className="flex flex-col gap-8 border-t-2 border-[#001233] pt-12 group">
+              <div className="flex flex-col gap-6 border-t border-[#001233]/10 pt-16">
                 <div className="flex items-center space-x-6">
-                   <span className="text-[#D4AF37] font-black text-xl tracking-widest italic">0{i+1} —</span>
-                   <h3 className="text-7xl md:text-8xl font-black italic tracking-tighter text-[#001233]">{step.title}</h3>
+                   <span className="text-[#D4AF37] font-black text-2xl tracking-widest italic">0{i+1}.</span>
+                   <h3 className="text-6xl md:text-8xl font-black italic tracking-tighter text-[#001233] leading-none">{step.title}</h3>
                 </div>
-                <div className="pl-12">
-                  <p className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] mb-6">{step.subtitle}</p>
-                  <p className="text-[#001233]/80 text-2xl leading-relaxed serif italic">
+                <div className="md:pl-16 mt-4">
+                  <p className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] mb-4">{step.subtitle}</p>
+                  <p className="text-[#001233]/80 text-2xl md:text-3xl leading-relaxed serif italic max-w-2xl">
                     {step.description}
                   </p>
                 </div>
@@ -171,9 +168,9 @@ const TemplateSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 100}>
-              <div className="group border border-[#001233]/10 bg-white p-12 transition-all duration-500 hover:border-[#D4AF37] hover:shadow-2xl rounded-sm">
-                <span className="text-[#D4AF37] text-xs font-black tracking-[0.4em] mb-4 block uppercase opacity-30">Phase 0{i+1}</span>
-                <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233] mb-4">{item.label}</h4>
+              <div className="group border border-[#001233]/10 bg-white p-12 transition-all duration-500 hover:border-[#D4AF37] hover:shadow-2xl rounded-sm h-full">
+                <span className="text-[#D4AF37] text-[10px] font-black tracking-[0.4em] mb-4 block uppercase opacity-30">Component 0{i+1}</span>
+                <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233] mb-4 leading-none">{item.label}</h4>
                 <p className="text-[#001233]/70 text-lg leading-relaxed font-medium">
                   {item.description}
                 </p>
@@ -210,7 +207,7 @@ const MissionDossier = () => {
     {
       title: "Building Teams That Stay",
       metric: "80%",
-      role: "80% Retention | Engagement Increase",
+      role: "Retention & Engagement Mandate",
       see: "Hospitality turnover hovers near 80% industry-wide. But behind every resignation is a person who never felt seen, never felt developed, never felt like their future was here. The potential wasn't just retention — it was transformation. What if we built a culture where people actually wanted to stay?",
       shape: "We created a multi-layered recognition and development system. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
       sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction.",
@@ -219,6 +216,7 @@ const MissionDossier = () => {
         "./trolley-1.jpg", 
         "./trolley-2.jpg", 
         "./pizza-party.jpg", 
+        "./group-dinner.jpg",
         "./meeting-ballroom.jpg", 
         "./certificates.jpg"
       ]
@@ -226,7 +224,7 @@ const MissionDossier = () => {
     {
       title: "The Activation Engine",
       metric: "$1M+",
-      role: "Campaign Driven Growth since 2022",
+      role: "Portfolio Revenue Strategy",
       see: "Hotels in regional markets don't get foot traffic by accident — they earn it. The potential wasn't to compete for the travelers already coming; it was to manufacture demand by giving people a reason to arrive in the first place. The question we asked: What if the hotel itself became the destination?",
       shape: "We built a systematic programming engine with three layers. First, recurring series that create habit: Ladies Night every Thursday, Trivia Wednesdays, Sizzling Thursdays. Second, seasonal tentpoles: 12 Days of Christmas, NYE Masquerade Ball, Valentine's couples retreats.",
       sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book.",
@@ -250,7 +248,7 @@ const MissionDossier = () => {
     <section id="track-record" className="py-32 bg-[#001233] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <FadeIn>
-          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Operational Evidence</span>
+          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Execution History</span>
           <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-24 text-white">RESULTS IN <br />ACTION.</h2>
         </FadeIn>
         
@@ -275,11 +273,11 @@ const MissionDossier = () => {
               
               {active === i && (
                 <div className="px-8 pb-16 animate-fadeIn">
-                  {/* COMPACT HORIZONTAL SCROLLER */}
-                  <div className="mb-16 border-b border-white/10 pb-8">
-                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-4 -mx-4 px-4">
+                  {/* EVIDENCE GALLERY - COMPACT */}
+                  <div className="mb-20 border-b border-white/10 pb-12">
+                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-6 -mx-4 px-4">
                       {m.images.map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[300px] h-[200px] snap-start overflow-hidden border border-white/10 bg-black/40 shadow-xl rounded-sm">
+                        <div key={idx} className="flex-shrink-0 w-[400px] h-[280px] snap-start overflow-hidden border border-white/10 bg-black/40 shadow-2xl rounded-sm">
                           <img 
                             src={img} 
                             alt={`${m.title} evidence ${idx + 1}`} 
@@ -292,34 +290,34 @@ const MissionDossier = () => {
                     </div>
                   </div>
 
-                  {/* ALIGNED VERTICAL STACKED NARRATIVE */}
-                  <div className="max-w-4xl space-y-20 pt-8">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center space-x-4">
-                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em]">01. THE AUDIT</span>
-                        <h4 className="text-[#D4AF37] text-4xl font-black italic tracking-tighter">SEE.</h4>
+                  {/* NARRATIVE FLOW - CLEAN VERTICAL STACK */}
+                  <div className="max-w-4xl space-y-32">
+                    <div className="flex flex-col gap-6">
+                      <div className="flex items-center space-x-6">
+                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] opacity-40">Phase 01 —</span>
+                        <h4 className="text-[#D4AF37] text-5xl font-black italic tracking-tighter leading-none">SEE.</h4>
                       </div>
-                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-2 border-[#D4AF37] pl-8 serif">
+                      <p className="text-white/90 text-2xl md:text-3xl font-medium leading-relaxed italic border-l-2 border-[#D4AF37]/30 pl-12 serif">
                         {m.see}
                       </p>
                     </div>
                     
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center space-x-4">
-                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em]">02. THE REFRAME</span>
-                        <h4 className="text-[#D4AF37] text-4xl font-black italic tracking-tighter">SHAPE.</h4>
+                    <div className="flex flex-col gap-6">
+                      <div className="flex items-center space-x-6">
+                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] opacity-40">Phase 02 —</span>
+                        <h4 className="text-[#D4AF37] text-5xl font-black italic tracking-tighter leading-none">SHAPE.</h4>
                       </div>
-                      <p className="text-white/90 text-2xl font-medium leading-relaxed italic border-l-2 border-[#D4AF37] pl-8 serif">
+                      <p className="text-white/90 text-2xl md:text-3xl font-medium leading-relaxed italic border-l-2 border-[#D4AF37]/30 pl-12 serif">
                         {m.shape}
                       </p>
                     </div>
                     
-                    <div className="flex flex-col gap-4 p-12 bg-white/5 border border-[#D4AF37]/20 rounded-sm">
-                      <div className="flex items-center space-x-4">
-                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em]">03. THE EXECUTION</span>
-                        <h4 className="text-[#D4AF37] text-4xl font-black italic tracking-tighter">SELL.</h4>
+                    <div className="flex flex-col gap-6 p-16 bg-white/5 border border-[#D4AF37]/20 rounded-sm relative">
+                      <div className="flex items-center space-x-6 mb-4">
+                        <span className="text-[#D4AF37] text-[12px] font-black uppercase tracking-[0.5em] opacity-60">Phase 03 —</span>
+                        <h4 className="text-[#D4AF37] text-5xl font-black italic tracking-tighter leading-none">SELL.</h4>
                       </div>
-                      <p className="text-white text-2xl font-bold leading-relaxed italic serif">
+                      <p className="text-white text-2xl md:text-4xl font-bold leading-tight italic serif">
                         {m.sell}
                       </p>
                     </div>
@@ -423,14 +421,14 @@ const App = () => {
           <div className="animate-marquee whitespace-nowrap items-center flex">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex items-center space-x-12 mx-12">
-                <span className="text-[#001233] text-xs font-black uppercase tracking-[0.4em] italic flex items-center">
-                  <Trophy className="mr-4 w-4 h-4" /> #1 HOTEL IN IOWA (2X)
+                <span className="text-[#001233] text-sm font-black uppercase tracking-[0.4em] italic">
+                   #1 HOTEL IN IOWA (2X) //
                 </span>
-                <span className="text-[#001233] text-xs font-black uppercase tracking-[0.4em] italic flex items-center">
-                  <TrendingUp className="mr-4 w-4 h-4" /> 18% TREVPAR GROWTH
+                <span className="text-[#001233] text-sm font-black uppercase tracking-[0.4em] italic">
+                   18% TREVPAR GROWTH //
                 </span>
-                <span className="text-[#001233] text-xs font-black uppercase tracking-[0.4em] italic flex items-center">
-                  <Target className="mr-4 w-4 h-4" /> 80% TEAM RETENTION
+                <span className="text-[#001233] text-sm font-black uppercase tracking-[0.4em] italic">
+                   80% TEAM RETENTION //
                 </span>
               </div>
             ))}
