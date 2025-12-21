@@ -13,7 +13,8 @@ import {
   Target,
   Eye,
   Layers,
-  Zap
+  Zap,
+  ArrowRight
 } from 'lucide-react';
 
 /**
@@ -156,7 +157,13 @@ const MissionDossier = () => {
       role: "The Warrior Hotel, Autograph Collection",
       see: "The Warrior Hotel opened during the height of COVID — a masterpiece hidden behind masks and mandates. The building was beautiful, the brand was strong, but the community never had the chance to celebrate it. The opportunity wasn't just to relaunch a hotel — it was to reignite civic pride and reintroduce The Warrior as a symbol of Sioux City's strength and revival.",
       shape: "We began with a roundtable: What potential are we trying to actualize? The answer was clear — reconnection. The team envisioned The Warrior not as a luxury landmark standing apart, but as a gathering place standing with the city. We used the Chamber of Commerce as a bridge between business and community — transforming a single ribbon cutting into a six-week celebration of renewal.",
-      sell: "For six consecutive weeks, the city came alive. Over 2,000 guests joined in the celebrations, rediscovering a place that felt both brand new and deeply familiar. $200K in auxiliary spend followed over five months. The Warrior reentered the community not through advertising, but through authentic connection."
+      sell: "For six consecutive weeks, the city came alive. Over 2,000 guests joined in the celebrations, rediscovering a place that felt both brand new and deeply familiar. $200K in auxiliary spend followed over five months. The Warrior reentered the community not through advertising, but through authentic connection.",
+      images: [
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1551882547-ff43c63faf76?q=80&w=800&auto=format&fit=crop"
+      ]
     },
     {
       title: "The Activation Engine",
@@ -164,7 +171,13 @@ const MissionDossier = () => {
       role: "The Warrior Hotel & Hotel Julien Dubuque",
       see: "Hotels in regional markets don't get foot traffic by accident — they earn it. The potential wasn't to compete for the travelers already coming; it was to manufacture demand by giving people a reason to arrive in the first place. The question we asked: What if the hotel itself became the destination?",
       shape: "We built a systematic programming engine with three layers. First, recurring series that create habit and fill midweek gaps: Ladies Night every Thursday ($8K+ per event), Trivia Wednesdays, Sizzling Thursdays steak specials. Second, seasonal tentpoles: 12 Days of Christmas (200+ room nights annually), NYE Masquerade Ball (400+ guests), Valentine's couples retreats. Third, premium experiences: winemaker dinners, chef's table events, spa skincare nights, bourbon tastings.",
-      sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book."
+      sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book.",
+      images: [
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1533416405735-2615adbc2911?q=80&w=800&auto=format&fit=crop"
+      ]
     },
     {
       title: "Building Teams That Stay",
@@ -172,7 +185,13 @@ const MissionDossier = () => {
       role: "80% Retention | 27-Point Engagement Increase",
       see: "Hospitality turnover hovers near 80% industry-wide. But behind every resignation is a person who never felt seen, never felt developed, never felt like their future was here. The potential wasn't just retention — it was transformation. What if we built a culture where people actually wanted to stay?",
       shape: "We created a multi-layered recognition and development system. Monthly: Employee of the Month with real rewards. Weekly: department-level shoutouts. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
-      sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction."
+      sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction.",
+      images: [
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop"
+      ]
     }
   ];
 
@@ -204,18 +223,60 @@ const MissionDossier = () => {
               </button>
               
               {active === i && (
-                <div className="px-8 pb-16 grid md:grid-cols-3 gap-12 animate-fadeIn">
-                  <div className="space-y-4">
-                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">SEE</span>
-                    <p className="text-white/60 serif italic text-lg leading-relaxed">{m.see}</p>
+                <div className="px-8 pb-16 animate-fadeIn">
+                  {/* Visual Evidence - Horizontal Scroll */}
+                  <div className="mb-16">
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.3em]">Operational Evidence</span>
+                      <div className="flex items-center space-x-2 text-[#D4AF37]/50 text-[10px] font-bold uppercase tracking-widest">
+                        <span>Swipe to Browse</span> <ArrowRight size={14} />
+                      </div>
+                    </div>
+                    <div className="flex overflow-x-auto hide-scrollbar snap-x gap-6 -mx-4 px-4 pb-4">
+                      {m.images.map((img, idx) => (
+                        <div key={idx} className="flex-shrink-0 w-[350px] h-[250px] snap-start overflow-hidden border border-white/10 shadow-2xl rounded-sm">
+                          <img 
+                            src={img} 
+                            alt={`${m.title} evidence ${idx + 1}`} 
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 transform hover:scale-110"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="space-y-4">
-                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">SHAPE</span>
-                    <p className="text-white text-lg font-bold italic leading-tight">{m.shape}</p>
-                  </div>
-                  <div className="space-y-4 bg-[#D4AF37]/10 p-6 border-l-2 border-[#D4AF37]">
-                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">SELL</span>
-                    <p className="text-white text-lg font-black italic tracking-tight">{m.sell}</p>
+
+                  <div className="grid md:grid-cols-3 gap-12">
+                    <div className="space-y-6">
+                      <div className="flex items-center space-x-3">
+                        <Eye className="text-[#D4AF37] w-5 h-5" />
+                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SEE</span>
+                      </div>
+                      <p className="text-white/80 text-lg font-medium leading-relaxed italic border-l border-white/10 pl-6">
+                        {m.see}
+                      </p>
+                    </div>
+                    <div className="space-y-6">
+                      <div className="flex items-center space-x-3">
+                        <Layers className="text-[#D4AF37] w-5 h-5" />
+                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SHAPE</span>
+                      </div>
+                      <p className="text-white/80 text-lg font-medium leading-relaxed italic border-l border-white/10 pl-6">
+                        {m.shape}
+                      </p>
+                    </div>
+                    <div className="space-y-6 bg-[#D4AF37]/5 p-8 border border-[#D4AF37]/20 relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <Zap className="text-[#D4AF37] w-12 h-12" />
+                      </div>
+                      <div className="flex items-center space-x-3 relative z-10">
+                        <Zap className="text-[#D4AF37] w-5 h-5" />
+                        <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SELL</span>
+                      </div>
+                      <p className="text-white text-lg font-bold leading-relaxed italic relative z-10">
+                        {m.sell}
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
@@ -331,7 +392,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* Vision Section first, then Process Section immediately after */}
       <VisionSection />
       <ProcessSection />
       
