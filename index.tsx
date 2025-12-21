@@ -14,18 +14,16 @@ import {
   Eye,
   Layers,
   Zap,
-  ArrowRight,
   Star,
   Home,
   Tent,
   MailQuestion,
   Heart,
-  ChevronRight
+  ArrowRight
 } from 'lucide-react';
 
 /**
  * useOnScreen Hook
- * Correctly matches React.RefObject types to satisfy the TypeScript compiler.
  */
 function useOnScreen<T extends HTMLElement>(ref: React.RefObject<T | null>, rootMargin = '0px') {
   const [isVisible, setIsVisible] = useState(false);
@@ -76,12 +74,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#" className="flex items-center space-x-4 group">
           <Anchor className="w-8 h-8 text-[#D4AF37] group-hover:rotate-12 transition-transform" />
-          <span className="text-xl font-black tracking-[0.2em] uppercase italic">JOSEPH MADDOX</span>
+          <span className="text-xl font-black tracking-[0.2em] uppercase italic text-white">JOSEPH MADDOX</span>
         </a>
 
         <div className="hidden lg:flex items-center space-x-10">
           {links.map(l => (
-            <a key={l.name} href={l.href} className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-[#D4AF37] transition-colors">{l.name}</a>
+            <a key={l.name} href={l.href} className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/70 hover:text-[#D4AF37] transition-colors">{l.name}</a>
           ))}
           <a 
             href="#" 
@@ -99,10 +97,10 @@ const Navbar = () => {
       {mobileMenu && (
         <div className="fixed inset-0 bg-[#001233] z-40 flex flex-col items-center justify-center space-y-8 lg:hidden animate-fadeIn">
           {links.map(l => (
-            <a key={l.name} href={l.href} onClick={() => setMobileMenu(false)} className="text-3xl font-black uppercase italic tracking-tighter">{l.name}</a>
+            <a key={l.name} href={l.href} onClick={() => setMobileMenu(false)} className="text-3xl font-black uppercase italic tracking-tighter text-white">{l.name}</a>
           ))}
           <a href="#" className="text-3xl font-black uppercase italic text-[#D4AF37]">Resume</a>
-          <button onClick={() => setMobileMenu(false)} className="p-4 border border-white/10 rounded-full mt-12"><X /></button>
+          <button onClick={() => setMobileMenu(false)} className="p-4 border border-white/10 rounded-full mt-12 text-white"><X /></button>
         </div>
       )}
     </nav>
@@ -160,29 +158,29 @@ const ProcessSection = () => {
 
 const TemplateSection = () => {
   const items = [
-    { label: "Tentpole", description: "Signature monthly event", icon: <Star className="w-5 h-5 text-[#D4AF37]" /> },
-    { label: "Outlets", description: "Activation in each venue", icon: <Home className="w-5 h-5 text-[#D4AF37]" /> },
-    { label: "Rooms", description: "Themed package", icon: <Tent className="w-5 h-5 text-[#D4AF37]" /> },
-    { label: "Email", description: "Month-specific campaign", icon: <MailQuestion className="w-5 h-5 text-[#D4AF37]" /> },
-    { label: "Charity", description: "Local partner tie-in", icon: <Heart className="w-5 h-5 text-[#D4AF37]" /> },
-    { label: "Capstone", description: "Month-ending experience", icon: <Zap className="w-5 h-5 text-[#D4AF37]" /> }
+    { label: "Tentpole", description: "Signature monthly event", icon: <Star className="w-5 h-5" /> },
+    { label: "Outlets", description: "Activation in each venue", icon: <Home className="w-5 h-5" /> },
+    { label: "Rooms", description: "Themed package", icon: <Tent className="w-5 h-5" /> },
+    { label: "Email", description: "Month-specific campaign", icon: <MailQuestion className="w-5 h-5" /> },
+    { label: "Charity", description: "Local partner tie-in", icon: <Heart className="w-5 h-5" /> },
+    { label: "Capstone", description: "Month-ending experience", icon: <Zap className="w-5 h-5" /> }
   ];
 
   return (
-    <section className="py-32 bg-white border-t border-[#001233]/5">
+    <section className="py-32 bg-[#f8f9fa] border-t border-[#001233]/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <FadeIn>
           <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Standard Operating System</span>
           <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-4 text-[#001233]">THE MONTHLY <br />TEMPLATE.</h2>
-          <p className="text-xl md:text-2xl serif italic text-[#001233]/60 mb-20">"Same structure. Different theme. Repeatable every year."</p>
+          <p className="text-xl md:text-2xl serif italic text-[#001233]/60 mb-20">Same structure. Different theme. Repeatable every year.</p>
         </FadeIn>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 100}>
-              <div className="group border-l border-[#001233]/10 pl-8 hover:border-[#D4AF37] transition-colors duration-500">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-2 bg-[#001233]/5 rounded-sm">
+              <div className="group border-l-2 border-[#D4AF37]/20 pl-8 hover:border-[#D4AF37] transition-colors duration-500 bg-white p-10 shadow-sm hover:shadow-xl rounded-sm">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-12 h-12 flex items-center justify-center bg-[#001233] text-[#D4AF37] rounded-full shadow-lg transform group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <h4 className="text-3xl font-black uppercase italic tracking-tighter text-[#001233]">{item.label}</h4>
@@ -213,7 +211,7 @@ const MissionDossier = () => {
         "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1551882547-ff43c63faf76?q=80&w=800&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop"
       ]
     },
     {
@@ -298,6 +296,7 @@ const MissionDossier = () => {
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-12">
+                    {/* Unified Typography for SEE, SHAPE, SELL */}
                     <div className="space-y-6">
                       <div className="flex items-center space-x-3">
                         <Eye className="text-[#D4AF37] w-5 h-5" />
@@ -324,7 +323,7 @@ const MissionDossier = () => {
                         <Zap className="text-[#D4AF37] w-5 h-5" />
                         <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em]">SELL</span>
                       </div>
-                      <p className="text-white text-lg font-bold leading-relaxed italic relative z-10">
+                      <p className="text-white/80 text-lg font-medium leading-relaxed italic relative z-10">
                         {m.sell}
                       </p>
                     </div>
