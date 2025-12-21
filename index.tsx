@@ -9,16 +9,18 @@ import {
   Plus,
   Minus,
   Trophy,
-  BarChart3,
   TrendingUp,
-  Target
+  Target,
+  Eye,
+  Layers,
+  Zap
 } from 'lucide-react';
 
 /**
  * useOnScreen Hook
- * Fixed: Added | null to RefObject to satisfy TypeScript compiler (error TS2345)
+ * Correctly matches React.RefObject types to satisfy the TypeScript compiler.
  */
-const useOnScreen = (ref: React.RefObject<HTMLElement | null>, rootMargin = '0px') => {
+function useOnScreen<T extends HTMLElement>(ref: React.RefObject<T | null>, rootMargin = '0px') {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,7 +32,7 @@ const useOnScreen = (ref: React.RefObject<HTMLElement | null>, rootMargin = '0px
     return () => { if (current) observer.unobserve(current); };
   }, [ref, rootMargin]);
   return isVisible;
-};
+}
 
 const FadeIn: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -75,8 +77,7 @@ const Navbar = () => {
             <a key={l.name} href={l.href} className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-[#D4AF37] transition-colors">{l.name}</a>
           ))}
           <a 
-            href="/resume.pdf" 
-            target="_blank" 
+            href="#" 
             className="bg-[#D4AF37] text-[#001233] px-8 py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-lg"
           >
             Resume
@@ -93,7 +94,7 @@ const Navbar = () => {
           {links.map(l => (
             <a key={l.name} href={l.href} onClick={() => setMobileMenu(false)} className="text-3xl font-black uppercase italic tracking-tighter">{l.name}</a>
           ))}
-          <a href="/resume.pdf" className="text-3xl font-black uppercase italic text-[#D4AF37]">Resume</a>
+          <a href="#" className="text-3xl font-black uppercase italic text-[#D4AF37]">Resume</a>
           <button onClick={() => setMobileMenu(false)} className="p-4 border border-white/10 rounded-full mt-12"><X /></button>
         </div>
       )}
@@ -101,32 +102,77 @@ const Navbar = () => {
   );
 };
 
+const ProcessSection = () => {
+  const steps = [
+    {
+      title: "SEE",
+      icon: <Eye className="w-12 h-12 mb-6 text-[#D4AF37]" />,
+      subtitle: "Data & Cultural Intelligence",
+      description: "A comprehensive audit of the hyper-local market. For Annapolis, this means mapping the Naval Academy's 12-month rhythm—from I-Day to Commissioning Week—identifying where local traditions intersect with revenue gaps."
+    },
+    {
+      title: "SHAPE",
+      icon: <Layers className="w-12 h-12 mb-6 text-[#D4AF37]" />,
+      subtitle: "The Activation Framework",
+      description: "Transforming the physical asset into a 'living room' for the community. We design experiences, not just menus, ensuring the lobby and F&B outlets feel like an extension of the Severn River waterfront culture."
+    },
+    {
+      title: "SELL",
+      icon: <Zap className="w-12 h-12 mb-6 text-[#D4AF37]" />,
+      subtitle: "Community Deployment",
+      description: "High-impact sales strategies that prioritize civic partnerships. We don't just wait for RFPs; we actively embed the hotel into the fabric of Annapolis heritage, driving loyalty and market share."
+    }
+  ];
+
+  return (
+    <section id="process" className="py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid lg:grid-cols-3 gap-16">
+          {steps.map((step, i) => (
+            <FadeIn key={i} delay={i * 200}>
+              <div className="group">
+                {step.icon}
+                <h3 className="text-6xl font-black italic tracking-tighter text-[#001233] mb-2">{step.title}</h3>
+                <p className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.4em] mb-6">{step.subtitle}</p>
+                <div className="h-px w-full bg-[#001233]/10 mb-8 group-hover:bg-[#D4AF37] transition-colors"></div>
+                <p className="text-[#001233]/70 text-lg leading-relaxed font-medium">
+                  {step.description}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const MissionDossier = () => {
   const [active, setActive] = useState<number | null>(0);
   const missions = [
     {
-      title: "THE COMMUNITY RELAUNCH",
-      metric: "2,000+ Guests",
+      title: "The Community Relaunch",
+      metric: "2,000+",
       role: "The Warrior Hotel, Autograph Collection",
-      context: "Relaunching a luxury asset in a post-lockdown market required a civic homecoming.",
-      action: "Orchestrated a six-week high-impact campaign that used Chamber partnerships to bridge the hotel and local business leaders.",
-      result: "Generated $200K in auxiliary spend in 5 months and re-established the hotel as the city's primary social hub."
+      see: "The Warrior Hotel opened during the height of COVID — a masterpiece hidden behind masks and mandates. The building was beautiful, the brand was strong, but the community never had the chance to celebrate it. The opportunity wasn't just to relaunch a hotel — it was to reignite civic pride and reintroduce The Warrior as a symbol of Sioux City's strength and revival.",
+      shape: "We began with a roundtable: What potential are we trying to actualize? The answer was clear — reconnection. The team envisioned The Warrior not as a luxury landmark standing apart, but as a gathering place standing with the city. We used the Chamber of Commerce as a bridge between business and community — transforming a single ribbon cutting into a six-week celebration of renewal.",
+      sell: "For six consecutive weeks, the city came alive. Over 2,000 guests joined in the celebrations, rediscovering a place that felt both brand new and deeply familiar. $200K in auxiliary spend followed over five months. The Warrior reentered the community not through advertising, but through authentic connection."
     },
     {
-      title: "THE ACTIVATION ENGINE",
-      metric: "18% TRevPAR Growth",
-      role: "Portfolio Strategy",
-      context: "Low-occupancy periods were viewed as lost time. I viewed them as untapped programming windows.",
-      action: "Developed a standardized 'Activation Playbook'—from curated Ladies Nights to themed Masquerade events.",
-      result: "Drove over $1M in incremental event-based revenue across the portfolio in year one."
+      title: "The Activation Engine",
+      metric: "$1M+",
+      role: "The Warrior Hotel & Hotel Julien Dubuque",
+      see: "Hotels in regional markets don't get foot traffic by accident — they earn it. The potential wasn't to compete for the travelers already coming; it was to manufacture demand by giving people a reason to arrive in the first place. The question we asked: What if the hotel itself became the destination?",
+      shape: "We built a systematic programming engine with three layers. First, recurring series that create habit and fill midweek gaps: Ladies Night every Thursday ($8K+ per event), Trivia Wednesdays, Sizzling Thursdays steak specials. Second, seasonal tentpoles: 12 Days of Christmas (200+ room nights annually), NYE Masquerade Ball (400+ guests), Valentine's couples retreats. Third, premium experiences: winemaker dinners, chef's table events, spa skincare nights, bourbon tastings.",
+      sell: "Over $1M in activation and campaign-driven revenue since 2022. Across a 4-property portfolio, 22 activations drove a 6% TRevPAR lift. The properties went from competing on rate to competing on experience. The hotel became the heartbeat of the city — not just another room to book."
     },
     {
-      title: "CULTURE OF RETENTION",
-      metric: "80% Retention",
-      role: "Leadership Development",
-      context: "Hospitality is plagued by turnover. To scale, we built a culture that team members actually valued.",
-      action: "Created a formal mentorship program for high-potential associates and implemented a data-driven recognition system.",
-      result: "Increased leadership retention to 80% and facilitated 8 internal management promotions."
+      title: "Building Teams That Stay",
+      metric: "80%",
+      role: "80% Retention | 27-Point Engagement Increase",
+      see: "Hospitality turnover hovers near 80% industry-wide. But behind every resignation is a person who never felt seen, never felt developed, never felt like their future was here. The potential wasn't just retention — it was transformation. What if we built a culture where people actually wanted to stay?",
+      shape: "We created a multi-layered recognition and development system. Monthly: Employee of the Month with real rewards. Weekly: department-level shoutouts. Annually: service anniversary celebrations, holiday parties, summer outings. But recognition without development rings hollow. So we built career pathing infrastructure: identified high-potential associates early, created mentorship tracks, mapped clear promotion pathways.",
+      sell: "Retention climbed to 80%. Leadership retention increased 24%. We promoted 8 associates internally and mentored 14 team members into supervisor and management positions. Engagement scores jumped 27 points. Teams that stay together learn together — and guests feel the difference in every interaction."
     }
   ];
 
@@ -134,8 +180,8 @@ const MissionDossier = () => {
     <section id="track-record" className="py-32 bg-[#001233] border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <FadeIn>
-          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Confidential Briefing</span>
-          <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-24">TRACK <br />RECORD.</h2>
+          <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Case Studies</span>
+          <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter italic leading-none mb-24 text-white">RESULTS IN <br />ACTION.</h2>
         </FadeIn>
         
         <div className="space-y-4">
@@ -143,7 +189,7 @@ const MissionDossier = () => {
             <div key={i} className={`border border-white/10 transition-all duration-500 overflow-hidden ${active === i ? 'bg-white/[0.03] border-[#D4AF37]' : 'hover:bg-white/[0.01]'}`}>
               <button 
                 onClick={() => setActive(active === i ? null : i)}
-                className="w-full text-left py-12 px-8 flex items-center justify-between group"
+                className="w-full text-left py-12 px-8 flex items-center justify-between group text-white"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:space-x-12">
                   <span className="text-4xl md:text-6xl font-black italic opacity-20 group-hover:opacity-100 transition-opacity text-[#D4AF37]">{m.metric}</span>
@@ -160,16 +206,16 @@ const MissionDossier = () => {
               {active === i && (
                 <div className="px-8 pb-16 grid md:grid-cols-3 gap-12 animate-fadeIn">
                   <div className="space-y-4">
-                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">The Vision</span>
-                    <p className="text-white/60 serif italic text-lg leading-relaxed">{m.context}</p>
+                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">SEE</span>
+                    <p className="text-white/60 serif italic text-lg leading-relaxed">{m.see}</p>
                   </div>
                   <div className="space-y-4">
-                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">The Strategy</span>
-                    <p className="text-white text-lg font-bold italic leading-tight">{m.action}</p>
+                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">SHAPE</span>
+                    <p className="text-white text-lg font-bold italic leading-tight">{m.shape}</p>
                   </div>
                   <div className="space-y-4 bg-[#D4AF37]/10 p-6 border-l-2 border-[#D4AF37]">
-                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">The Impact</span>
-                    <p className="text-white text-lg font-black italic tracking-tight">{m.result}</p>
+                    <span className="text-[#D4AF37] text-[9px] font-black uppercase tracking-[0.3em]">SELL</span>
+                    <p className="text-white text-lg font-black italic tracking-tight">{m.sell}</p>
                   </div>
                 </div>
               )}
@@ -247,7 +293,7 @@ const VisionSection = () => (
 
 const App = () => {
   return (
-    <div className="min-h-screen selection:bg-[#D4AF37] selection:text-[#001233]">
+    <div className="min-h-screen selection:bg-[#D4AF37] selection:text-[#001233] bg-[#001233]">
       <Navbar />
       
       <section className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden">
@@ -257,7 +303,7 @@ const App = () => {
               <span className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.8em]">A Strategic Vision for Graduate Annapolis</span>
               <div className="h-px w-20 bg-[#D4AF37]/30"></div>
             </div>
-            <h1 className="text-7xl md:text-[13rem] font-black uppercase italic leading-[0.75] tracking-tighter mb-12">
+            <h1 className="text-7xl md:text-[13rem] font-black uppercase italic leading-[0.75] tracking-tighter mb-12 text-white">
               COMMAND THE <br />TRADITION.
             </h1>
             <p className="text-2xl md:text-5xl serif italic text-white/80 max-w-4xl border-l-4 border-[#D4AF37] pl-10 leading-tight">
@@ -285,24 +331,27 @@ const App = () => {
         </div>
       </section>
 
+      {/* Vision Section first, then Process Section immediately after */}
       <VisionSection />
+      <ProcessSection />
+      
       <MissionDossier />
       <CalendarSection />
 
       <section className="py-48 text-center bg-[#001233]">
-        <h2 className="text-7xl md:text-[14rem] font-black italic tracking-tighter leading-[0.75] mb-20 uppercase">ACTIVATE <br />ANNAPOLIS.</h2>
-        <div className="flex flex-col md:flex-row justify-center gap-8">
+        <h2 className="text-7xl md:text-[14rem] font-black italic tracking-tighter leading-[0.75] mb-20 uppercase text-white">ACTIVATE <br />ANNAPOLIS.</h2>
+        <div className="flex flex-col md:flex-row justify-center gap-8 px-6">
           <a href="mailto:josephmaddox@outlook.com" className="bg-[#D4AF37] text-[#001233] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-2xl flex items-center justify-center space-x-4">
             <Mail size={18} /> <span>Email Briefing</span>
           </a>
-          <button className="border-2 border-white/10 hover:border-[#D4AF37] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] transition-all flex items-center justify-center space-x-4">
+          <button className="border-2 border-white/10 hover:border-[#D4AF37] px-16 py-8 text-xs font-black uppercase tracking-[0.4em] transition-all flex items-center justify-center space-x-4 text-white">
             <FileText size={18} /> <span>Download Resume</span>
           </button>
         </div>
       </section>
 
       <footer className="py-16 border-t border-white/5 bg-black text-center opacity-20 hover:opacity-100 transition-opacity">
-        <p className="text-[10px] font-black uppercase tracking-[0.5em]">Joseph Maddox Strategic Ops Briefing © 2025 // Graduate Annapolis</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.5em] text-white">Joseph Maddox Strategic Ops Briefing © 2025 // Graduate Annapolis</p>
       </footer>
     </div>
   );
